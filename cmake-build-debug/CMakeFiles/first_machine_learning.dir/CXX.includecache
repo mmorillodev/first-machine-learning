@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/entities/HiddenNeuron/HiddenNeuron.h
+../Neuron/Neuron.h
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/entities/Neuron/Neuron.h
+
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/entities/InputNeuron/InputNeuron.h
+../Neuron/Neuron.h
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/entities/Neuron/Neuron.h
+
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/entities/Neuron/Neuron.h
+
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/main.cpp
+iostream
+-
+ctime
+-
+cmath
+-
+entities/Neuron/Neuron.h
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/entities/Neuron/Neuron.h
+entities/InputNeuron/InputNeuron.h
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/entities/InputNeuron/InputNeuron.h
+entities/HiddenNeuron/HiddenNeuron.h
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/entities/HiddenNeuron/HiddenNeuron.h
+

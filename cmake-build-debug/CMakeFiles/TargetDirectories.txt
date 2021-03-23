@@ -1,0 +1,3 @@
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/cmake-build-debug/CMakeFiles/first_machine_learning.dir
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Matheus Morillo/CLionProjects/first-machine-learning/cmake-build-debug/CMakeFiles/rebuild_cache.dir
