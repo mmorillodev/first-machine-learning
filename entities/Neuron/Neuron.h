@@ -13,11 +13,8 @@ protected:
 
 public:
     Neuron(int inputLength);
-
     double* getWeights();
-
     double getBias();
-
     void setBias(double b);
 };
 
