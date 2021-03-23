@@ -1,3 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2020.3.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\first_machine_learning.dir/objects.a
-C:\MinGW-8.1.0\mingw64\bin\ar.exe cr CMakeFiles\first_machine_learning.dir/objects.a @CMakeFiles\first_machine_learning.dir\objects1.rsp
-C:\MinGW-8.1.0\mingw64\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\first_machine_learning.dir/objects.a -Wl,--no-whole-archive  -o first_machine_learning.exe -Wl,--out-implib,libfirst_machine_learning.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\first_machine_learning.dir\linklibs.rsp
