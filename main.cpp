@@ -2,7 +2,6 @@
 #include <ctime>
 #include <cmath>
 #include "entities/Neuron/Neuron.h"
-#include "entities/InputNeuron/InputNeuron.h"
 #include "entities/HiddenNeuron/HiddenNeuron.h"
 
 using namespace std;
@@ -128,21 +127,7 @@ int main() {
 
     } while (summarizedErrors > MAXIMUM_ERROR);
 
-    cout << "Total of iterations: " << totalIterations << endl;
-
-    cout << "After training: " << endl;
-
-    const double tests[4][2] = {
-        {0.0, 0.0},
-        {0.0, 1.0},
-        {1.0, 0.0},
-        {1.0, 1.0}
-    };
-
-    /*cout << "0 | 0 = " << ((HiddenNeuron *) &outputNeurons[0])->process((double *) tests[0]) << endl;
-    cout << "0 | 1 = " << ((HiddenNeuron *) &outputNeurons[0])->process((double *) tests[1]) << endl;
-    cout << "1 | 0 = " << ((HiddenNeuron *) &outputNeurons[0])->process((double *) tests[2]) << endl;
-    cout << "1 | 1 = " << ((HiddenNeuron *) &outputNeurons[0])->process((double *) tests[3]) << endl;*/
+    cout << "\nTotal of iterations: " << totalIterations << endl;
 
     return 0;
 }
