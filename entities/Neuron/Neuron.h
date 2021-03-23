@@ -19,8 +19,6 @@ public:
     double getBias();
 
     void setBias(double b);
-
-    void amIANeuron();
 };
 
 #endif //FIRST_MACHINE_LEARNING_NEURON_H

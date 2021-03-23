@@ -25,7 +25,3 @@ double Neuron::getBias() {
 void Neuron::setBias(double b) {
     this->bias = b;
 }
-
-void Neuron::amIANeuron() {
-    cout << "Yes, Im a neuron!!" << endl;
-}
