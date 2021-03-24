@@ -25,3 +25,11 @@ double Neuron::getBias() {
 void Neuron::setBias(double b) {
     this->bias = b;
 }
+
+double Neuron::process(double *arr) {
+    return arr[0];
+}
+
+double Neuron::sigmoid(double value) {
+    return 1.0;
+}

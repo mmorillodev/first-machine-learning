@@ -4,16 +4,16 @@
 #include "entities/Neuron/Neuron.h"
 #include "entities/HiddenNeuron/HiddenNeuron.h"
 
+#define INPUT_QTT 2
+#define NEURON_QTT 5
+#define OUTPUT_QTT 1
+#define LEARNING_RATE 0.5
+#define MAXIMUM_ERROR 0.05
+
 using namespace std;
 
 int main() {
     srand(time(nullptr));
-
-    const int INPUT_QTT = 2;
-    const int NEURON_QTT = 5;
-    const int OUTPUT_QTT = 1;
-    const double LEARNING_RATE = 0.5;
-    const double MAXIMUM_ERROR = 0.05;
 
     const double samples[4][3] = {
         {0.0, 0.0, 0.0},
@@ -22,15 +22,15 @@ int main() {
         {1.0, 1.0, 0.0}
     };
 
-    Neuron *neurons = (HiddenNeuron *) malloc(sizeof(HiddenNeuron) * NEURON_QTT);
-    Neuron *outputNeurons = (HiddenNeuron *) malloc(sizeof(HiddenNeuron) * OUTPUT_QTT);
+    Neuron *neurons[NEURON_QTT];
+    Neuron *outputNeurons[OUTPUT_QTT];
 
-    for(int i = 0; i < NEURON_QTT; i++) {
-        neurons[i] = HiddenNeuron(INPUT_QTT);
+    for(auto & neuron : neurons) {
+        neuron = new HiddenNeuron(INPUT_QTT);
     }
 
-    for(int i = 0; i < OUTPUT_QTT; i++) {
-        outputNeurons[i] = HiddenNeuron(NEURON_QTT);
+    for(auto & outputNeuron : outputNeurons) {
+        outputNeuron = new HiddenNeuron(NEURON_QTT);
     }
 
     double inputs[INPUT_QTT];
@@ -42,7 +42,6 @@ int main() {
     double obtained[OUTPUT_QTT];
 
     double *weights;
-    HiddenNeuron *currentNeuron;
 
     double summarizedErrors;
     double outputDelta;
@@ -70,15 +69,13 @@ int main() {
             }
 
             for(int neuronIndex = 0; neuronIndex < NEURON_QTT; neuronIndex++) {
-                currentNeuron = ((HiddenNeuron *) &neurons[neuronIndex]);
-                resultPerNeuron[neuronIndex] = currentNeuron->process(inputs);
+                resultPerNeuron[neuronIndex] = neurons[neuronIndex]->process(inputs);
             }
 
             cout << "\t|";
 
             for(int neuronIndex = 0; neuronIndex < OUTPUT_QTT; neuronIndex++) {
-                currentNeuron = ((HiddenNeuron *) &outputNeurons[neuronIndex]);
-                obtained[neuronIndex] = currentNeuron->process(resultPerNeuron);
+                obtained[neuronIndex] = outputNeurons[neuronIndex]->process(resultPerNeuron);
 
                 cout << " " << obtained[neuronIndex];
             }
@@ -87,8 +84,7 @@ int main() {
 
             // update output layer weights
             for(int neuronIndex = 0; neuronIndex < OUTPUT_QTT; neuronIndex++) {
-                currentNeuron = ((HiddenNeuron *) &outputNeurons[neuronIndex]);
-                weights = currentNeuron->getWeights();
+                weights = outputNeurons[neuronIndex]->getWeights();
 
                 outputDelta
                         = (outputs[neuronIndex] - obtained[neuronIndex])
@@ -97,7 +93,7 @@ int main() {
                 summarizedErrors
                         += pow(outputs[neuronIndex] - obtained[neuronIndex], 2.0);
 
-                currentNeuron->setBias(currentNeuron->getBias() + LEARNING_RATE * outputDelta * 1.0);
+                outputNeurons[neuronIndex]->setBias(outputNeurons[neuronIndex]->getBias() + LEARNING_RATE * outputDelta * 1.0);
 
                 for(int weightIndex = 0; weightIndex < NEURON_QTT; weightIndex++) {
                     weights[weightIndex] = weights[weightIndex] + LEARNING_RATE * outputDelta * resultPerNeuron[weightIndex];
@@ -108,12 +104,11 @@ int main() {
 
             // update hidden layer weights
             for(int neuronIndex = 0; neuronIndex < NEURON_QTT; neuronIndex++) {
-                currentNeuron = (HiddenNeuron *) &neurons[neuronIndex];
-                weights = currentNeuron->getWeights();
+                weights = neurons[neuronIndex]->getWeights();
 
                 hiddenDelta = resultPerNeuron[neuronIndex] * (1.0 - resultPerNeuron[neuronIndex]) * backPropagation[neuronIndex];
 
-                currentNeuron->setBias(currentNeuron->getBias() + LEARNING_RATE * hiddenDelta * 1.0);
+                neurons[neuronIndex]->setBias(neurons[neuronIndex]->getBias() + LEARNING_RATE * hiddenDelta * 1.0);
 
                 for(int weightIndex = 0; weightIndex < INPUT_QTT; weightIndex++) {
                     weights[weightIndex] = weights[weightIndex] + LEARNING_RATE * hiddenDelta * resultPerNeuron[weightIndex];

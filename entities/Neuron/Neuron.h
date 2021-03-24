@@ -12,10 +12,13 @@ protected:
     double bias;
 
 public:
-    Neuron(int inputLength);
+    explicit Neuron(int inputLength);
     double* getWeights();
     double getBias();
     void setBias(double b);
+
+    virtual double process(double *arr);
+    virtual double sigmoid(double value);
 };
 
 #endif //FIRST_MACHINE_LEARNING_NEURON_H

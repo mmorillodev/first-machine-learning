@@ -7,8 +7,8 @@
 class HiddenNeuron: public Neuron {
 public:
     explicit HiddenNeuron(int inputLength);
-    double process(double *arr);
-    double sigmoid(double summary);
+    double process(double *arr) override;
+    double sigmoid(double summary) override;
 };
 
 
